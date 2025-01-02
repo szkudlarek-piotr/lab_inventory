@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Baza danych odczynników</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="header">Wyszukaj substancję</div>
+    <div id="three_rows">
+        <div id="left_menu">
+            <div class="header">Funkcje</div>
+
+        </div>
+        <div id="main_content">
+            <div id="substanceModal">
+                <div id="substanceModalTop">
+                    <div id="modalClosingDiv" onclick="closeSubstanceModal()">X</div>
+                </div>
+            </div>
+            <h1>Wpisz nazwę odczynnika, którego poszukujesz</h1>
+            <input type="text" id="chemicalsSerachName" onkeyup="getSuggestedSubstancesFromName()">
+            <h1>Wpisz CAS odczynnika, którego poszukujesz</h1>
+            <input type="text" id="chemicalsSerachCAS">
+            <div id="chemicalsResultsField">
+
+            </div>
+        </div>
+        <div id="right_menu"></div>
+    </div>
+    <script src="send_left_menu.js"></script>
+    <script src="clearResultsField.js"></script>
+    <script src="closeSubstanceModal.js"></script>
+    <script src="getSuggestedSubstancesFromName.js"></script>
+    <script src="showSubstanceModal.js"></script>
+    <script src="createSubstancesDivs.js"></script>
+    <script src="createLeftMenu.js"></script>
+    <script>
+        createLeftMenu()
+    </script>
+</body>

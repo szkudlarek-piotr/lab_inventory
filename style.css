@@ -1,0 +1,187 @@
+body{
+    background-color: rgb(181, 211, 211);
+}
+#header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    border-bottom: 1px solid black;
+}
+#three_rows {
+    display: flex;
+    min-height: 1200px;
+}
+#left_menu {
+    width: 20%;
+    min-height: 1200px;
+    border-right: 1px solid black;
+}
+#main_content {
+    width: calc(60% - 2px);
+    min-height: 1200px;
+    border-right: 1px solid black;
+    text-align: center;
+    
+}
+#right_menu {
+    width: 20%;
+    min-height: 1200px;
+    display: flex;
+}
+#left_menu > .header {
+    font-size:36px;
+    font-weight: 700;
+    font-weight: 700px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#left_menu > .menu_option {
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+}
+#left_menu > .menu_option:hover {
+    font-weight: 700;
+}
+#substanceSelector {
+    padding-left: 15%;
+    padding-right: 15%;
+    width: 70%
+}
+#substanceSelector > input {
+    width:100%;
+    height: 40px;
+}
+.substanceSuggestion {
+    width: 100%;
+    min-height: 40px;
+    font-size: 30px;
+    background-color: white;
+    display: flex;
+    border-bottom: 1px solid black;
+}
+.substanceName {
+    width: 70%;
+
+}
+.substancesSuggestions {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.casNumber {
+    color: rgb(70, 69, 69);
+    text-align: center;
+    width: 30%;
+}
+#chemicalsSerachCAS {
+    width:60%;
+    font-size: 24px;
+}
+#chemicalsSerachName {
+    width:60%;
+    font-size: 24px;
+}
+#chemicalsResultsField {
+    display: flex;
+    padding-left: 30px;
+    flex-wrap: wrap;
+    padding-right: 30px;
+}
+.substanceDiv {
+    width: 25%;
+    aspect-ratio: 2/3;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    --margin-size: calc(10% - 1px);
+}
+.substanceDiv > .substancePhoto {
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-left: var(--margin-size);
+    margin-right: var(--margin-size);
+    margin-top: var(--margin-size);
+    background-color: white;
+}
+.substanceDiv > .nameOfSubstanceDiv {
+    font-family: 'Comic Sans MS';
+    font-size: 24px;
+    margin-left: var(--margin-size);
+    margin-right: var(--margin-size);
+    word-wrap: break-word;
+}
+.substanceDiv > .casOfSubstanceDiv {
+    font-family: 'Arial';
+    font-size: 18px;
+    margin-left: var(--margin-size);
+    margin-right: var(--margin-size);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+.substanceDiv:hover {
+    background-color: red;
+}
+#substanceModal {
+    display: none;
+    width: 70%;
+    height: 70%;
+    position: fixed;
+    left: 15%;
+    top: 15%;
+    overflow-y: scroll;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: rgb(181, 211, 211);
+}
+#substanceModalTop {
+    height: 50px;
+    width: 100%;
+    top: 0px;
+    position: relative;
+}
+#modalClosingDiv {
+    height: 40px;
+    width: 40px;
+    font-size: 35px;
+    font-weight: 400;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    left: calc(100% - 50px);
+}
+.substancePhotoInModal {
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+table {
+    border: 1px solid black;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 30px;
+}
+td, th, tr {
+    border: 1px solid black;
+}

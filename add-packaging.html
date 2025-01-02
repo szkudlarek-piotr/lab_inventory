@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Baza danych odczynników</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="header">Dodaj pojemnik</div>
+    <div id="three_rows">
+        <div id="left_menu">
+            <div class="header" >Funkcje</div>
+
+        </div>
+        <div id="main_content">
+            <br>
+            <label for="lab">Wybierz lab:</label>
+            <select name="labs" id="labsSelector">
+            
+            </select><br><br>
+
+
+            <label for="shelf">Wybierz szafkę:</label>
+            <select name="shelves" id="shelvesSelector">
+
+            </select><br><br>
+            
+            <div id="substanceSelector">
+                <label for="substanceInput">Nazwa substancji:</label>
+                <input type="text" id="substanceInput" placeholder="Wpisz nazwę substancji..." onkeyup="suggestSubstances()">
+                <ul id="substancesSuggestions" class="hidden">
+                    
+                </ul>
+            </div>
+            <div id="chosenSubstance">
+                <h3>ID substancji:</h3>
+                <div id="idOfChosenSubstance" class="chosenSubstanceData"></div>
+                <h3>Nazwa substancji:</h3>
+                <div id="nameOfChosenSubstance" class="chosenSubstanceData"></div>
+                <h3>CAS substancji:</h3>
+                <div id="casOfChosenSubstance" class="chosenSubstanceData"></div>
+            </div>
+            <h3>Masa:</h3>
+            <input type="text" id="massInput"><br>
+            <h3>Uwagi:</h3>
+            <input type="text" id="adnotationsInput"><br>
+            <h3>Ilośc opakowań:</h3>
+            <input type="text" id="amountInput" value="1"><br>
+            <h3>Czystość:</h3>
+            <input type="text" id="purityInput"><br>
+            <h3>Producer:</h3>
+            <input type="text" id="producerInput"><br><br><br>
+            <input type="submit" value= "Dodaj opakowanie" onclick="addNewPackaging()">
+        </div>
+
+        <div id="right_menu"></div>
+    </div>
+    <script src="send_left_menu.js"></script>
+    <script src="addShelvesAndLabs.js"></script>
+    <script src="suggestSubstances.js"></script>
+    <script src="clearSuggestionsInAddPackaging.js"></script>
+    <script src="chooseSubstanceInAddPackaging.js"></script>
+    <script src="isInt.js"></script>
+    <script src="addNewPackaging.js"></script>
+    <script src="createLeftMenu.js"></script>
+    
+    <script>
+        createLeftMenu()
+        addShelvesAndLabs()
+    </script>
+</body>
