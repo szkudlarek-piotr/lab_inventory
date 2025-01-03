@@ -131,7 +131,6 @@ body{
     margin-left: var(--margin-size);
     margin-right: var(--margin-size);
     margin-top: 10px;
-    margin-bottom: 10px;
     word-wrap: break-word;
 }
 .substanceDiv:hover {
@@ -184,4 +183,10 @@ table {
 }
 td, th, tr {
     border: 1px solid black;
+}
+.formulaInSearchedSubstanceDiv {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }

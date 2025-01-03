@@ -13,7 +13,7 @@ async function get_all_subs(checked_string) {
     const query_text = `SELECT id, name, cas, formula, CID FROM substances WHERE name LIKE ?`
     let [all_subs] = await pool.query(query_text, [formattedString])
     for (substance of all_subs) {
-        let substanceObj = {"name": substance.name, "cas": substance.cas, "id": substance.id, "image": getPhotoFromId(substance.id)}
+        let substanceObj = {"name": substance.name, "cas": substance.cas, "id": substance.id, "image": getPhotoFromId(substance.id), "formula": substance.formula}
         returnedArr.push(substanceObj)
     }
     return returnedArr
