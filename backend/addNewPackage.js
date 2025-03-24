@@ -7,10 +7,10 @@ const pool = mysql.createPool({
     database : process.env.DB_NAME
 }).promise()
 
-async function insertNewPackage(labId, shelfId, substanceId, mass, adnotations, amount, purity, producer) {
-    const reqText = "INSERT INTO `chemicals_packagings` (`id`, `lab_id`, `shelf_id`, `substance_id`, `mass`, `uwagi`, `amount`, `purity`, `Producer`) VALUES (NULL, ?, ?,  ?, ?, ?, ?, ?, ?);"
+async function insertNewPackage(shelfId, substanceId, mass, adnotations, amount, purity, producer) {
+    const reqText = "INSERT INTO `chemicals_packagings` (`id`, `shelf_id`, `substance_id`, `mass`, `uwagi`, `amount`, `purity`, `Producer`) VALUES (NULL, ?,  ?, ?, ?, ?, ?, ?);"
     try {
-        const [result] = await pool.query(reqText, [labId, shelfId, substanceId, mass, adnotations, amount, purity, producer]);
+        const [result] = await pool.query(reqText, [shelfId, substanceId, mass, adnotations, amount, purity, producer]);
         console.log(`Wstawiono nowy pakiet. ID: ${result.insertId}, Zmienione wiersze: ${result.affectedRows}`);
         return result; // Zwracamy wynik dla potwierdzenia
     } catch (error) {

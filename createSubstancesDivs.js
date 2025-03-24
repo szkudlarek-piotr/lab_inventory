@@ -1,4 +1,34 @@
 function createSubstancesDivs(substancesJson) {
+
+    function addSubscriptToChemicalFormula(chemicalFormulaString) {
+        let alreadyNumeric = false
+            let printedFormula = ""
+            for (character of chemicalFormulaString) {
+                if (!(character >= '0' && character <= '9')) {
+                    if (alreadyNumeric == false) {
+                        printedFormula += character
+                    }
+                    if (alreadyNumeric == true) {
+                        printedFormula += `</sub>${character}`
+                        alreadyNumeric = false
+                    }
+                }
+                else {
+                    if (alreadyNumeric == true) {
+                        printedFormula += `${character}`
+                    }
+                    if (alreadyNumeric == false) {
+                        printedFormula += `<sub>${character}`
+                        alreadyNumeric = true
+                    }
+                }
+        
+            }
+        if (alreadyNumeric == true) {
+            printedFormula += "</sub>"
+        }
+        return printedFormula
+    }
             
     for (substance of substancesJson) {
         let placeForSubstancesDivs = document.getElementById("chemicalsResultsField")
@@ -26,29 +56,8 @@ function createSubstancesDivs(substancesJson) {
         }
         if (substance.formula != "" && substance.formula != null) {
 
-            let alreadyNumeric = false
-            let printedFormula = ""
-            for (character of substance.formula) {
-                if (!(character >= '0' && character <= '9')) {
-                    if (alreadyNumeric == false) {
-                        printedFormula += character
-                    }
-                    if (alreadyNumeric == true) {
-                        printedFormula += `</sub>${character}`
-                        alreadyNumeric = false
-                    }
-                }
-                else {
-                    if (alreadyNumeric == true) {
-                        printedFormula += `${character}`
-                    }
-                    if (alreadyNumeric == false) {
-                        printedFormula += `<sub>${character}`
-                        alreadyNumeric = true
-                    }
-
-                }
-            }
+            const chemicalFormulaString = substance.formula
+            const printedFormula  = addSubscriptToChemicalFormula(chemicalFormulaString)
             let formulaDiv = document.createElement("div")
             formulaDiv.setAttribute("class", "formulaInSearchedSubstanceDiv")
             formulaDiv.innerHTML = `${printedFormula}`

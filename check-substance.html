@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <link rel="stylesheet" href="style_from_chat.css">
+    <title>Baza danych odczynników</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="header">Sprawdź substancję</div>
+    <div id="three_rows">
+        <div id="left_menu">
+            <div class="header">Funkcje</div>
+
+        </div>
+        <div id="main_content">
+            <h1>Sprawdź dane o susbtancji</h1>
+            <input type="text" id="substanceIdInput" placeholder="Podaj ID substancji">
+            <input type="button" value="Sprawdź!" onclick="checkSubstance()" id="checkSubstanceButton">
+            <div id="divForTable"></div>
+        </div>
+        <div id="right_menu"></div>
+    </div>
+    <script src="createLeftMenu.js"></script>
+    <script>
+        createLeftMenu()
+        function clearTableDiv() {
+            let divForTable = document.getElementById("divForTable")
+            divForTable.innerHTML = ""
+        }
+        async function checkSubstance() {
+            const substanceId = document.getElementById("substanceIdInput").value
+            clearTableDiv()
+            if (!(isNaN(substanceId))) {
+                const substanceQuery = await fetch(`http://localhost:3000/check-substance?substanceId=${substanceId}`)
+                const substanceJson = await substanceQuery.json()
+                if (substanceJson.length == 0) {
+                    alert("Niestety, takiej substancji nie ma w labie")
+                }
+                else {
+                    const divForTable = document.getElementById("divForTable")
+                    
+                    const tableElement = document.createElement("table")
+                    tableElement.setAttribute("id", "substanceCheckingTable")
+                    divForTable.appendChild(tableElement)
+                    
+                    const tableHeaders = ["ID", "Name", "CAS", "Shelf", "Packaging capacity", "Packagings number"]
+
+                    let headersRow = tableElement.insertRow()
+
+                    for (headerName of tableHeaders) {
+                        let headerCol = headersRow.insertCell()
+                        headerCol.outerHTML = `<th>${headerName}</th>`
+                    }
+
+                    for (package of substanceJson) {
+                        let packageRow = tableElement.insertRow()
+
+                        let substanceIDCol = packageRow.insertCell()
+                        substanceIDCol.innerText = package["id"]
+                
+                        let substanceNameCol = packageRow.insertCell()
+                        substanceNameCol.innerText = package["name"]
+
+                        let substanceCasCol = packageRow.insertCell()
+                        substanceCasCol.innerText = package["cas"]
+
+                        let substanceShelfCol = packageRow.insertCell()
+                        substanceShelfCol.innerText = package["shelf_name"]
+
+                        let substanceMassCol = packageRow.insertCell()
+                        substanceMassCol.innerText = package["mass"]
+
+                        let substanceAmountCol = packageRow.insertCell()
+                        substanceAmountCol.innerText = package["amount"]
+            }
+                }
+            }
+            else {
+                alert("Podana przez Ciebie wartość nie jest liczbą, więc nie może być ID substancji!")
+            }
+        }
+    </script>
+</body>

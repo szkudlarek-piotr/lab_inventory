@@ -167,12 +167,12 @@ body{
     left: calc(100% - 50px);
 }
 .substancePhotoInModal {
-    width: 60%;
+    width: 30%;
     border: 1px solid black;
     border-radius: 5px;
     margin-top: 30px;
     margin-bottom: 30px;
-
+    border: 1px solid black;
 }
 table {
     border: 1px solid black;
@@ -189,4 +189,7 @@ td, th, tr {
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#substanceNameInput {
+    width: 70%;
 }

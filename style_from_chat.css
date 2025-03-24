@@ -1,0 +1,236 @@
+:root {
+    --bg-color: rgb(181, 211, 211);
+    --border-color: black;
+    --font-family-primary: 'Courier New', Courier, monospace;
+    --font-family-secondary: 'Comic Sans MS';
+    --font-family-tertiary: 'Arial';
+    --font-family-serif: Georgia, 'Times New Roman', Times, serif;
+    --font-size-large: 24px;
+    --font-size-medium: 18px;
+    --font-size-small: 16px;
+    --padding: 15px;
+    --border-radius: 5px;
+    --hover-color: #ffcccc;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-family-primary);
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    padding: var(--padding);
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
+    font-family: var(--font-family-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+#three_rows {
+    display: flex;
+    min-height: 1200px;
+}
+
+#left_menu, #right_menu {
+    width: 20%;
+    min-height: 1200px;
+    display: flex;
+    flex-direction: column;
+}
+
+#left_menu {
+    border-right: 1px solid var(--border-color);
+}
+
+#main_content {
+    width: calc(60% - 2px);
+    min-height: 1200px;
+    border-right: 1px solid var(--border-color);
+    text-align: center;
+}
+
+#left_menu > .header {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    padding: var(--padding) 0;
+}
+
+#left_menu > .menu_option {
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    font-size: var(--font-size-medium);
+    font-weight: 400;
+    padding: 5px 0;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+#left_menu > .menu_option:hover {
+    font-weight: 700;
+    background-color: var(--hover-color);
+}
+
+#substanceSelector {
+    padding-left: 15%;
+    padding-right: 15%;
+    width: 70%;
+}
+
+#substanceSelector > input {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.substanceSuggestion {
+    width: 100%;
+    min-height: 40px;
+    font-size: var(--font-size-large);
+    background-color: white;
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.substanceName {
+    width: 70%;
+}
+
+.substancesSuggestions {
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.casNumber {
+    color: rgb(70, 69, 69);
+    text-align: center;
+    width: 30%;
+}
+
+#chemicalsSerachCAS, #chemicalsSerachName {
+    width: 60%;
+    font-size: var(--font-size-large);
+}
+
+#chemicalsResultsField {
+    display: flex;
+    padding-left: 30px;
+    flex-wrap: wrap;
+    padding-right: 30px;
+}
+
+.substanceDiv {
+    width: 25%;
+    aspect-ratio: 2/3;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin: 10px 3%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.substanceDiv > .substancePhoto {
+    width: 80%;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    margin-top: 10%;
+    background-color: white;
+}
+
+.substanceDiv > .nameOfSubstanceDiv {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-large);
+    margin: 10px;
+    word-wrap: break-word;
+}
+
+.substanceDiv > .casOfSubstanceDiv {
+    font-family: var(--font-family-tertiary);
+    font-size: var(--font-size-medium);
+    margin: 10px;
+    word-wrap: break-word;
+}
+
+.substanceDiv:hover {
+    background-color: var(--hover-color);
+}
+
+#substanceModal {
+    display: none;
+    width: 70%;
+    height: 80%;
+    position: fixed;
+    left: 15%;
+    top: 10%;
+    overflow-y: scroll;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+}
+
+#substanceModalTop {
+    height: 50px;
+    width: 100%;
+    top: 0;
+    position: relative;
+}
+
+#modalClosingDiv {
+    height: 40px;
+    width: 40px;
+    font-size: 35px;
+    font-weight: 400;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    margin: 5px;
+    position: absolute;
+    right: 5px;
+}
+
+.substancePhotoInModal {
+    width: 30%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin: 30px auto;
+}
+
+table {
+    border: 1px solid var(--border-color);
+    width: 80%;
+    margin: 30px auto;
+}
+
+td, th, tr {
+    border: 1px solid var(--border-color);
+}
+
+.formulaInSearchedSubstanceDiv {
+    font-size: var(--font-size-medium);
+    margin: 20px 0;
+    font-family: var(--font-family-serif);
+}
+
+#substanceNameInput {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+h2 {
+    font-family: 'Comic Sans MS';
+}
+#substanceIdInput {
+    width:60%;
+    font-size: 18px;
+}
+#checkSubstanceButton {
+    width:15%;
+    font-size: 18px;
+}

@@ -17,8 +17,13 @@
             <br>
 
             <label for="shelf">Wybierz lab:</label>
-            <select name="shelves" id="labsSelector" ></select>
+            <select name="shelves" id="labsSelector" onchange="addLockers()"></select>
             
+            <br><br>
+
+            <label for="locker">Wybierz szafkę:</label>
+            <select name="locker" id="lockersSelector" onchange="addShelves()"></select>
+
             <br><br>
 
             <label for="shelf">Wybierz półkę:</label>
@@ -57,7 +62,9 @@
 
     </div>
     <script src="send_left_menu.js"></script>
-    <script src="addShelvesAndLabs.js"></script>
+    <script src="addLabs.js"></script>
+    <script src="addLockers.js"></script>
+    <script src="addShelves.js"></script>
     <script src="suggestSubstances.js"></script>
     <script src="clearSuggestionsInAddPackaging.js"></script>
     <script src="chooseSubstanceInAddPackaging.js"></script>
@@ -67,6 +74,6 @@
     
     <script>
         createLeftMenu()
-        addShelvesAndLabs()
+        addLabs()
     </script>
 </body>

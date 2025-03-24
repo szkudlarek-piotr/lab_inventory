@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>Baza danych odczynników</title>
+    <link rel="stylesheet" href="style_from_chat.css">
+    <title>Dodaj subsancję</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -11,16 +11,62 @@
     <div id="three_rows">
         <div id="left_menu">
             <div class="header">Funkcje</div>
-
+            
         </div>
         <div id="main_content">
+            <h2>Dodaj subsancję</h2>
+            <form id="addSubstanceForm">
+                <h4>Nazwa substancji</h4>
+                <input type="text" id="substanceNameInput">
+                <h4>Numer CAS</h4>
+                <input type="text" id="casNumberInput">
+                <h4>Inne nazwy</h4>
+                <input type="text" id="altNamesInput">
+                <h4>Wzór sumaryczny</h4>
+                <input type="text" id="chemicalFormula">
+                <h4>Numer CID</h4>
+                <input type="text" id="cidNumberInput">
+                <br>
+                <br>
+                <input type="button" onclick="addSubstance()" value="Dodaj substancję!">
+            </form>
 
         </div>
         <div id="right_menu"></div>
     </div>
-    <script src="send_left_menu.js"></script>
     <script src="createLeftMenu.js"></script>
     <script>
         createLeftMenu()
+        async function addSubstance() {
+            const substanceName = document.getElementById("substanceNameInput").value
+            const casNumber = document.getElementById("casNumberInput").value
+            const alternativeNames = document.getElementById("altNamesInput").value
+            const chemicalFormula = document.getElementById("chemicalFormula").value
+            const cidNumber = document.getElementById("cidNumberInput").value
+
+            const postParams = new URLSearchParams({
+                name: substanceName,
+                cas: casNumber,
+                alternative_names: alternativeNames,
+                formula: chemicalFormula,
+                cid: cidNumber
+            })
+            console.log(postParams.toString())
+            try {
+                const addSubtanceReq = await fetch(`http://localhost:3000/add-substance?${postParams.toString()}`, {
+                    method: "POST"
+                })
+                constpostJson = await addSubtanceReq.json()
+                alert("Pomyślnie dodano substancję!")
+                document.getElementById("substanceNameInput").value = ""
+                document.getElementById("casNumberInput").value = ""
+                document.getElementById("altNamesInput").value = ""
+                document.getElementById("chemicalFormula").value = ""
+                document.getElementById("cidNumberInput").value = ""
+            }
+            catch {
+                console.log("Z jakiegoś powodu nie udało się dodac substancji.")
+            }
+        }
     </script>
 </body>

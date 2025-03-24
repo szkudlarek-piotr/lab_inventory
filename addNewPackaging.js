@@ -1,6 +1,5 @@
 async function addNewPackaging() {
     const chosenShelf = document.getElementById("shelvesSelector").value
-    const chosenLab = document.getElementById("labsSelector").value
     const substanceId = document.getElementById("idOfChosenSubstance").textContent
     const adnotationsToSend = document.getElementById("adnotationsInput").value
     const amountToSend = document.getElementById("amountInput").value
@@ -10,7 +9,6 @@ async function addNewPackaging() {
 
     if (isInt(amountToSend)) {
         const postParams = new URLSearchParams({
-            lab: chosenLab,
             shelf: chosenShelf,
             substance: substanceId,
             mass: massToSend,
